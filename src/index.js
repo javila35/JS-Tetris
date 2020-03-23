@@ -1,4 +1,4 @@
-const BLOCKS_URL = localhost
+const BLOCKS_URL = "http://localhost/api/v1/blocks"
 
 document.addEventListener("DOMContentLoaded", function(){
 let currentPiece = null;

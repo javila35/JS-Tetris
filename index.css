@@ -1,37 +1,53 @@
+#landing {
+  position: absolute;
+  top: 20%;
+  left: 40%;
+  margin-right: 50%; 
+  text-align: center;
+  font-size: 50px;
+}
+
+#landing button {
+  font-size: 50px;
+  padding: 20px;
+  border: 2px solid #000000;
+  box-shadow: 0 16px 16px 0 rgba(0,0,0,0.2), 0 16px 20px 0 rgba(0,0,0,0.19);
+  border-radius: 8px;
+}
+
 .parent {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(5);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-    }
-    
-    .div1 { grid-area: 1 / 1 / 2 / 6; }
-    .div2 { grid-area: 2 / 2 / 6 / 5; }
-    .div3 { grid-area: 2 / 5 / 6 / 6; }
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  }
+  
+  .div1 { grid-area: 1 / 1 / 2 / 6; }
+  .div2 { grid-area: 2 / 2 / 6 / 5; }
+  .div3 { grid-area: 2 / 5 / 6 / 6; }
 
 #gameboard {
-    background-color: #111;
-    height: 570px;
-    margin: 0 auto;
-    overflow: hidden;
-    position: relative;
-    top: 30px;
-    text-align: center;
-    width: 300px;
+  background-color: #111;
+  height: 570px;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+  top: 30px;
+  text-align: center;
+  width: 300px;
 }
 
 #gridsquare {
-    background-color: white;
-    height: 30px;
-    position: absolute;
-    width: 30px;
-  }
+  background-color: white;
+  height: 30px;
+  position: absolute;
+  width: 30px;
+}
 
-  #currentpiece {
-    background-color: blue;
-    height: 120px;
-    position: absolute;
-    width: 120px;
-  }
-      
+#currentpiece {
+  background-color: blue;
+  height: 120px;
+  position: absolute;
+  width: 120px;
+}

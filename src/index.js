@@ -1,7 +1,6 @@
 const BLOCKS_URL = "http://localhost/api/v1/blocks"
 
 document.addEventListener("DOMContentLoaded", function(){
-let currentPiece = null;
 
 //Select Random Piece
     function getRandomPiece(){
@@ -14,53 +13,44 @@ let currentPiece = null;
 
     function pickPiece(piecesArray){
         let id = Math.floor(Math.random()*7)
-        let shape = piecesArray.find(id)
+        let block = piecesArray[id]
+        let letter = eval(block.shape)
+        console.log(letter)
         currentPiece = shape
     }
 
 //Get currentPiece.s1 to show up on the screen
-
+//See board-set-up (drawTetrad/colorTetrad)
 
 
 //Normal falling piece function
-  function movePieceDown(piece){
-      setTimeout(function(){
-          let oldPosition = parseInt(piece.style.top) || 1;
-          let newPosition = oldPosition + 5
-
-          if (oldPosition < 570){
-            piece.style.top = newPosition + "px";
-          }
-          movePieceDown(piece)
-        }, 50)    
-      }
-})
+  
 
 //Move piece left
-function movePieceLeft(piece) {
-    let rightEdge = piece.style.right.replace("px", "");
+function moveTetradLeft(tetrad) {
+    let rightEdge = tetrad.style.right.replace("px", "");
     let right = parseInt(rightNumber, 10);
    
     if (right < 300) {
-      piece.style.right = `${right + 30}px`;
+      tetrad.style.right = `${right + 30}px`;
     }
   }
 
 
-//Move piece right
-function movePieceRight(piece) {
-    let rightEdge = piece.style.right.replace("px", "");
+//Move tetrad right
+function moveTetradRight(tetrad) {
+    let rightEdge = tetrad.style.right.replace("px", "");
     let right = parseInt(rightNumber, 10);
    
     if (right >= 30) {
-      piece.style.right = `${right - 30}px`;
+      tetrad.style.right = `${right - 30}px`;
     }
   }
 
 //Arrow left function
 document.addEventListener("keydown", function(e) {
     if (e.key === "ArrowLeft") {
-      movePieceLeft(currentPiece);
+      ess.moveTetradLeft();
     }
   });
 
@@ -68,7 +58,14 @@ document.addEventListener("keydown", function(e) {
 //Arrow right function
 document.addEventListener("keydown", function(e) {
     if (e.key === "ArrowRight") {
-      movePieceRight(currentPiece);
+      ess.moveTetradRight();
     }
   });
 
+  //Arrow down function
+document.addEventListener("keydown", function(e) {
+    if (e.key === "ArrowDown") {
+      ess.moveTetradDown();
+    }
+  })
+})

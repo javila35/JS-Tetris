@@ -12,21 +12,21 @@ document.addEventListener("DOMContentLoaded", function(){
 //Arrow left function
 document.addEventListener("keydown", function(e) {
     if (e.key === "ArrowLeft") {
-      ess.moveTetradLeft();
+      currentPiece.moveTetradLeft();
     }
   });
 
 //Arrow right function
 document.addEventListener("keydown", function(e) {
     if (e.key === "ArrowRight") {
-      ess.moveTetradRight();
+      currentPiece.moveTetradRight();
     }
   });
 
   //Arrow down function
 document.addEventListener("keydown", function(e) {
     if (e.key === "ArrowDown") {
-      ess.moveTetradDown();
+      currentPiece.moveTetradDown();
     }
   })
 })
@@ -34,6 +34,6 @@ document.addEventListener("keydown", function(e) {
 //Arrow up function
 document.addEventListener("keydown", function(e) {
   if (e.key === "ArrowUp") {
-    ess.rotateTetrad();
+    currentPiece.rotateTetrad();
   }
 });

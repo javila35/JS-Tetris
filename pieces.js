@@ -158,7 +158,8 @@ const T = [
         [Z, "green"],
         [S, "red"],
         [L, "orange"],
-        [J, "purple"]
+        [J, "pink"],
+        [T, "purple"]
       ]
       
 
@@ -169,7 +170,7 @@ const T = [
             this.stage = 0;
             this.activeTetrad = this.tetrad[this.stage]
             this.x = 4;
-            this.y = 2;
+            this.y = -1;
         }
     
         colorTetrad(color){
@@ -194,9 +195,11 @@ const T = [
             this.deleteTetrad();
             if (!this.collision(0,1,this.activeTetrad)){
                 this.y++;
+            } else {
+                lock(this.x, this.y, this.activeTetrad)
             }
             this.drawTetrad();
-            }
+        }
     
         moveTetradRight(){
             this.deleteTetrad()
@@ -259,34 +262,46 @@ const T = [
         }
 
     }
-    
-    let ess = new Piece(S, "blue");
-    ess.drawTetrad()
+ 
+let currentPiece = null;
 
 //Select Random Piece
 function getRandomPiece(){
     let id = Math.floor(Math.random()*7)
-    return BLOCKS[id]
+    let x = BLOCKS[id];
+    return new Piece(x[0], x[1]);
 }
 
-let x = getRandomPiece()
-let currentPiece = new Piece(x[0], x[1]);
-currentPiece = ess;
 
-document.addEventListener("DOMContentLoaded", function(){
-
-      setInterval(function(){
-        ess.moveTetradDown();
-    }, 800)
-
+function startFalling(){
+    currentPiece = getRandomPiece();
     setInterval(function(){
-        getRandomPiece()
-    })
+        currentPiece.moveTetradDown();
+    }, 800)
+}
 
+function lock(x,y,piece){
+    for (r=0; r<piece.length; r++){
+        for (c=0; c<piece.length; c++){
+            if (!piece[r][c]){
+                continue;
+            } else {
+                board[y+r][x+c] = piece.color;
+                drawSquare(x+c, y+r, board[y+r][x+c])
+            }
+        }
+    }
+    // SPEED INCREASES AS MORE PIECES FALL -- CHECKOUT TIMEOUT
+    // NEAR TOP, PIECES ARE CONFUSED ABOUT HOW TO APPEAR WHEN THEY'VE RUN OUT OF BOARD TO OCCUPY
+    // CHECK GAME END --> BASICALLY ON ERROR 
+    
+    //  CALL ROW CLEAR CHECK?
+    startFalling();
+}
 
+const startButton = document.querySelector("#landing button")
+startButton.addEventListener("click", function(){
+    startFalling();
+    startButton.disabled = true;
+    //when game over, disabled = false
 })
-
-    
-
-    
-

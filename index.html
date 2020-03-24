@@ -13,26 +13,35 @@
     <div class="parent">
     <!-- Header Division -->
         <div class="div1">
-            <h1>Welcome to Tetris!</h1>
+            <h1 style="padding-bottom: 20px; padding-top: 20px;">Welcome to Tetris!</h1>
+        </div>
+
+    <!-- Left Sidebar -->
+        <div class="div4">
+          <h2 style="margin-bottom: 4px;">Leaderboard:</br></h2>
+          High Scores to Beat!
         </div>
 
     <!-- Game Board Central Div -->
         <div class="div2"> 
-            <canvas id="canvas" width="300" height="600"></canvas>
+            <canvas id="canvas" width="210" height="410"></canvas>
             <!-- <div id="gameboard">
                 <div id="currentpiece" style="top: 0px; right: 0px;">
             </div> -->
         </div>
 
     <!-- Stats Right Sidebar Div -->
-        <div class="div3"> </div>
+        <div class="div3"> 
+            <div id="landing">
+                <h2>Wanna Play Tetris?</h2>
+                <button>Start Game</button>
+            </div>
+        </div>
     </div>
 
   <script type="text/javascript" src="./board-set-up.js"></script>
   <script type="text/javascript" src="./pieces.js"></script>
   <script type="text/javascript" src="./playtetris.js"></script>
-  
-  <!-- <script type="text/javascript" src="./index.js"></script> -->
 
 
 

@@ -274,7 +274,6 @@ function getRandomPiece(){
 
 let timer = null;
 function startFalling(){
-    console.log("Creating new interval.")
     currentPiece = getRandomPiece();
     timer = setInterval(function(){
         currentPiece.moveTetradDown();

@@ -19,33 +19,14 @@ document.addEventListener("DOMContentLoaded", function(){
         currentPiece = shape
     }
 
-//Get currentPiece.s1 to show up on the screen
+    // currentPiece
+
+//Get currentPiece to show up on the screen
 //See board-set-up (drawTetrad/colorTetrad)
 
 
 //Normal falling piece function
-  
-
-//Move piece left
-function moveTetradLeft(tetrad) {
-    let rightEdge = tetrad.style.right.replace("px", "");
-    let right = parseInt(rightNumber, 10);
-   
-    if (right < 300) {
-      tetrad.style.right = `${right + 30}px`;
-    }
-  }
-
-
-//Move tetrad right
-function moveTetradRight(tetrad) {
-    let rightEdge = tetrad.style.right.replace("px", "");
-    let right = parseInt(rightNumber, 10);
-   
-    if (right >= 30) {
-      tetrad.style.right = `${right - 30}px`;
-    }
-  }
+// SEE BOARD SET-UP
 
 //Arrow left function
 document.addEventListener("keydown", function(e) {
@@ -54,15 +35,12 @@ document.addEventListener("keydown", function(e) {
     }
   });
 
-
 //Arrow right function
 document.addEventListener("keydown", function(e) {
     if (e.key === "ArrowRight") {
       ess.moveTetradRight();
     }
   });
-<<<<<<< HEAD:playtetris.js
-=======
 
   //Arrow down function
 document.addEventListener("keydown", function(e) {
@@ -71,4 +49,10 @@ document.addEventListener("keydown", function(e) {
     }
   })
 })
->>>>>>> add-pieces:src/index.js
+
+//Arrow up function
+document.addEventListener("keydown", function(e) {
+  if (e.key === "ArrowUp") {
+    ess.rotateTetrad();
+  }
+});

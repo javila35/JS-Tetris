@@ -277,8 +277,8 @@ function startFalling(){
     currentPiece = getRandomPiece();
     timer = setInterval(function(){
         currentPiece.moveTetradDown();
-    }, 800)
-}
+    }, 800);
+};
 
 function lock(x,y,piece){
     for (r=0; r<piece.length; r++){
@@ -293,8 +293,10 @@ function lock(x,y,piece){
         }
     }
     // NEAR TOP, PIECES ARE CONFUSED ABOUT HOW TO APPEAR WHEN THEY'VE RUN OUT OF BOARD TO OCCUPY
+        //basically if when startFalling is called, it immediately collides. Game OVER!
     // CHECK GAME END --> BASICALLY ON ERROR 
     //  CALL ROW CLEAR CHECK?
+
     startFalling();
 }
 

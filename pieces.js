@@ -272,10 +272,11 @@ function getRandomPiece(){
     return new Piece(x[0], x[1]);
 }
 
-
+let timer = null;
 function startFalling(){
+    console.log("Creating new interval.")
     currentPiece = getRandomPiece();
-    setInterval(function(){
+    timer = setInterval(function(){
         currentPiece.moveTetradDown();
     }, 800)
 }
@@ -288,10 +289,10 @@ function lock(x,y,piece){
             } else {
                 board[y+r][x+c] = piece.color;
                 drawSquare(x+c, y+r, board[y+r][x+c])
+                clearInterval(timer);
             }
         }
     }
-    // SPEED INCREASES AS MORE PIECES FALL -- CHECKOUT TIMEOUT
     // NEAR TOP, PIECES ARE CONFUSED ABOUT HOW TO APPEAR WHEN THEY'VE RUN OUT OF BOARD TO OCCUPY
     // CHECK GAME END --> BASICALLY ON ERROR 
     

@@ -1,17 +1,14 @@
 #landing {
-  position: absolute;
+  /* position: absolute;
   top: 20%;
   left: 40%;
-  margin-right: 50%; 
+  margin-right: 50%;  */
   text-align: center;
-  font-size: 50px;
 }
 
 #landing button {
-  font-size: 50px;
-  padding: 20px;
   border: 2px solid #000000;
-  box-shadow: 0 16px 16px 0 rgba(0,0,0,0.2), 0 16px 20px 0 rgba(0,0,0,0.19);
+  /* box-shadow: 0 16px 16px 0 rgba(0,0,0,0.2), 0 16px 20px 0 rgba(0,0,0,0.19); */
   border-radius: 8px;
 }
 
@@ -23,9 +20,10 @@
   grid-row-gap: 0px;
   }
   
-  .div1 { grid-area: 1 / 1 / 2 / 6; }
-  .div2 { grid-area: 2 / 2 / 6 / 5; }
-  .div3 { grid-area: 2 / 5 / 6 / 6; }
+  .div1 { grid-area: 1 / 1 / 2 / 6; text-align: center;}
+  .div2 { grid-area: 2 / 2 / 6 / 5; text-align: center; }
+  .div3 { grid-area: 2 / 4 / 6 / 6; text-align: center; }
+  .div4 { grid-area: 2 / 1 / 6 / 2; text-align: center; }
 
 #gameboard {
   background-color: #111;
@@ -50,4 +48,8 @@
   height: 120px;
   position: absolute;
   width: 120px;
+}
+
+#canvas {
+  display: inline-block;
 }

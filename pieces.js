@@ -152,6 +152,16 @@ const T = [
         ]
     ]
 
+    const BLOCKS = [
+        [I, "blue"],
+        [O, "yellow"],
+        [Z, "green"],
+        [S, "red"],
+        [L, "orange"],
+        [J, "purple"]
+      ]
+      
+
     class Piece{
         constructor(tetrad, color){
             this.tetrad = tetrad;
@@ -182,7 +192,7 @@ const T = [
     
         moveTetradDown(){
             this.deleteTetrad();
-            if (this.y<18){
+            if (!this.collision(0,1,this.activeTetrad)){
                 this.y++;
             }
             this.drawTetrad();
@@ -236,7 +246,7 @@ const T = [
                 let newX = this.x + c + x;
                 let newY = this.y + r + y;
 
-                if (newX<0 || newX>10 || newY>20){
+                if (newX<0 || newX>10 || newY>=20){
                     return true;
                 }
 
@@ -250,7 +260,33 @@ const T = [
 
     }
     
-    
     let ess = new Piece(S, "blue");
     ess.drawTetrad()
+
+//Select Random Piece
+function getRandomPiece(){
+    let id = Math.floor(Math.random()*7)
+    return BLOCKS[id]
+}
+
+let x = getRandomPiece()
+let currentPiece = new Piece(x[0], x[1]);
+currentPiece = ess;
+
+document.addEventListener("DOMContentLoaded", function(){
+
+      setInterval(function(){
+        ess.moveTetradDown();
+    }, 800)
+
+    setInterval(function(){
+        getRandomPiece()
+    })
+
+
+})
+
     
+
+    
+

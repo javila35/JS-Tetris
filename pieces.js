@@ -294,7 +294,6 @@ function lock(x,y,piece){
     }
     // NEAR TOP, PIECES ARE CONFUSED ABOUT HOW TO APPEAR WHEN THEY'VE RUN OUT OF BOARD TO OCCUPY
     // CHECK GAME END --> BASICALLY ON ERROR 
-    
     //  CALL ROW CLEAR CHECK?
     startFalling();
 }

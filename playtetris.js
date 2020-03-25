@@ -37,3 +37,18 @@ document.addEventListener("keydown", function(e) {
     currentPiece.rotateTetrad();
   }
 });
+
+//Spacebar pause function
+document.addEventListener("keydown", function(e) {
+  if (e.keyCode === 32) {
+    if (start){
+      clearInterval(timer);
+      timer = null;
+    }
+    else if (!start) {
+      timer = setInterval(function(){
+        currentPiece.moveTetradDown();
+    }, 800);}
+  }
+  start = !start
+});

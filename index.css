@@ -14,3 +14,16 @@
 #canvas {
   display: inline-block;
 }
+
+#highscores {
+  width: 100%;
+}
+
+.div4 table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+.div4 th, td {
+  padding: 5px;
+}

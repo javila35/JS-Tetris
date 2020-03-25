@@ -18,18 +18,41 @@
 
     <!-- Left Sidebar -->
         <div class="div4">
+            <!-- High Score Modal -->
+            <div id="scoreModal" class="modal">
+                 <!-- Modal content -->
+                    <div class="modal-content">
+                    <h3>Congratulations! You are a HIGHSCORER!</h3>
+                    <form id="scoreForm">
+                        <input type="text" name="username", placeholder="Enter initials"></input>
+                        <input type="hidden" name="score">
+                        <button id="submitBtn" type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        
           <h2 style="margin-bottom: 4px;">Leaderboard:</br></h2>
-          High Scores to Beat!
-          <table>HighScores</table>
+          High Scores to Beat!<br></br></br>
+
+          <table style="margin: auto;">
             <tr>
-                <th>Username</th>
-                <th>High Score</th>
+                <th style="padding:10px;"><b>Username</b></th>
+                <th style="padding:10px;">&emsp;<b>High Score</b></th>
+            </tr>
+            <tr>
+                <td id="player0"></td>
+                <td id="player0-score"></td>
             </tr>
             <tr>
                 <td id="player1"></td>
                 <td id="player1-score"></td>
             </tr>
-
+            <tr>
+                <td id="player2"></td>
+                <td id="player2-score"></td>
+            </tr>
+            
+            </table>
         </div>
 
     <!-- Game Board Central Div -->
@@ -43,7 +66,8 @@
                 <h2>Wanna Play Tetris?</h2>
                 <button>Start Game</button>
             </div>
-            <div id="player-score"><h3>Your Current Score:</h3></div>
+            <div><h3>Your Current Score:</h3></div>
+                <div id="player-score"></div>
         </div>
     </div>
 

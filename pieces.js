@@ -178,7 +178,6 @@ const T = [
                 for (c=0; c<this.activeTetrad.length; c++){
                     if (this.activeTetrad[r][c]==1){
                         drawSquare(this.x + c, this.y + r, color)
-                        // board[this.y+r][this.x+c]=this.color
                     }
                 }
             }
@@ -275,8 +274,9 @@ const T = [
                 }
     
                 if (this.y + r < 0){
-                    alert("Womp-ba-domp. Game Over");
-                    location.reload(false);
+                    clearInterval(timer);
+                    timer = null;
+                    checkHighScore();
                     break;
                 } 
                 else {
@@ -339,7 +339,59 @@ function checkRowFull(){
             for( c = 0; c < 10; c++){
                 board[0][c] = white;
             }
+            currentScore += 10
+            document.getElementById("player-score").innerText = currentScore;
         }
     }
     drawBoard();
 }
+
+
+
+
+//high score
+const SCORES_URL = "http://localhost:3000/api/v1/highscores"
+function checkHighScore(){
+    var modal = document.getElementById("scoreModal");
+    fetch(SCORES_URL)
+      .then(resp => resp.json())
+      .then(data => {
+          compareScore(data);
+      })
+
+      function compareScore(dataArray){
+        let scores = dataArray.sort(function(a, b){
+            return b.score-a.score});
+        if (currentScore > scores[2].score){
+            modal.style.display = "block";
+        }
+        else {
+            alert("Womp-ba-domp. Game Over");
+            location.reload(false);
+        }
+      }
+
+      document.getElementById("scoreForm").addEventListener("submit", function(event){
+        event.preventDefault();
+        let username = event.target.username.value;
+        let score = currentScore;
+        fetch(SCORES_URL, {
+            method:"POST",
+            headers: {
+                "ContentType": "application/json",
+                Accept: "application/json"
+            },
+            body: JSON.stringify({highscore: {highscore: {
+                username: username,
+                score: score
+            }}})
+        })
+        .then(resp => resp.json())
+        .then(data => {
+                console.log(data)
+            })
+        modal.style.display = "none";
+    })
+
+}
+

@@ -287,26 +287,8 @@ const T = [
                 }
             }
           }
-          //ATTEMPT TO MOVE CHECK ROW FULL FUNCTION INSIDE LOCK?
-        //   for(r = 0; r < 20; r++){
-        //     let isRowFull = true;
-        //         for( c = 0; c < 10; c++){
-        //             isRowFull = isRowFull && (board[r][c] != white);
-        //         }
-                
-        //         if(isRowFull){
-        //             for( y = r; y > 1; y--){
-        //                 for( c = 0; c < 10; c++){
-        //                     board[y][c] = board[y-1][c];
-        //                 }
-        //             }
-        
-        //             for( c = 0; c < 10; c++){
-        //                 board[0][c] = white;
-        //             }
-        //         }
-        //     }
             drawBoard();
+            checkRowFull();
             startFalling();
         }
     }
@@ -337,28 +319,27 @@ const startButton = document.querySelector("#landing button")
 startButton.addEventListener("click", function(){
     startFalling();
     startButton.disabled = true;
-    //when game over, disabled = false
 })
 
-
-// function checkRowFull(){
-//     for(r = 0; r < 20; r++){
-//         let isRowFull = true;
-//         for( c = 0; c < 10; c++){
-//             isRowFull = isRowFull && (board[r][c] != white);
-//         }
+let isRowFull = true;
+function checkRowFull(){
+    for(r = 0; r < 20; r++){
+        let isRowFull = true;
+        for( c = 0; c < 10; c++){
+            isRowFull = isRowFull && (board[r][c] != white);
+        }
         
-//         if(isRowFull){
-//             for( y = r; y > 1; y--){
-//                 for( c = 0; c < 10; c++){
-//                     board[y][c] = board[y-1][c];
-//                 }
-//             }
+        if(isRowFull){
+            for( y = r; y > 1; y--){
+                for( c = 0; c < 10; c++){
+                    board[y][c] = board[y-1][c];
+                }
+            }
 
-//             for( c = 0; c < 10; c++){
-//                 board[0][c] = white;
-//             }
-//         }
-//     }
-//     drawBoard();
-// }
+            for( c = 0; c < 10; c++){
+                board[0][c] = white;
+            }
+        }
+    }
+    drawBoard();
+}

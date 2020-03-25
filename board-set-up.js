@@ -30,3 +30,5 @@ function drawBoard(){
 }
 
 drawBoard()
+
+let currentScore = 0;

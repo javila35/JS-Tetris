@@ -287,9 +287,9 @@ const T = [
                 }
             }
           }
-          drawBoard();
-          checkRowFull();
-          startFalling()
+            drawBoard();
+            checkRowFull();
+            startFalling();
         }
 
     }
@@ -319,14 +319,18 @@ const startButton = document.querySelector("#landing button")
 startButton.addEventListener("click", function(){
     startFalling();
     startButton.disabled = true;
-    //when game over, disabled = false
 })
 
 let isRowFull = true;
 function checkRowFull(){
     for(r = 0; r < 20; r++){
+<<<<<<< HEAD
        let isRowFull=true;
         for(c = 0; c < 10; c++){
+=======
+        let isRowFull = true;
+        for( c = 0; c < 10; c++){
+>>>>>>> 10bba354c155aec308af2a85657420b9c8d07e31
             isRowFull = isRowFull && (board[r][c] != white);
         }
         

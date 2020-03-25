@@ -31,4 +31,4 @@ function drawBoard(){
 
 drawBoard()
 
-let currentScore = 0;
+// let currentScore = 0;

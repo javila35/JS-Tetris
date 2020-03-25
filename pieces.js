@@ -161,6 +161,7 @@ const T = [
         [J, "pink"],
         [T, "purple"]
       ]
+
       
 
     class Piece{
@@ -276,6 +277,9 @@ const T = [
     
                 if (this.y + r < 0){
                     alert("Womp-ba-domp. Game Over");
+
+                    //create gameOver function? reset board, upload score, reset score
+
                     location.reload(false);
                     break;
                 } 
@@ -291,10 +295,10 @@ const T = [
             checkRowFull();
             startFalling();
         }
-
     }
 //END OF CLASS
- 
+
+let currentScore = 0;
 let currentPiece = null;
 
 //Select Random Piece
@@ -315,14 +319,62 @@ function startFalling(){
 };
 
 
+
+// function deleteRow(row){
+//     for (block of row){
+//         block = white;
+//     }
+// }
+function addScore(rowsCleared){
+    if (rowsCleared == 1){
+        currentScore += 40
+    }
+    if (rowsCleared == 2){
+        currentScore += 200
+    }
+    if (rowsCleared == 3){
+        currentScore += 300
+    }
+    if (rowsCleared == 4){
+        currentScore += 1200
+    }
+}
+
+
+
+// function checkForFullRow(){
+//     rowCount = 0;
+//     for (r = 0; r < row; r++) {
+//         if (board[r].every(block => block !== white)){
+//             rowCount++;
+//             console.log(`Row count is ${rowCount}`);
+//             for (y = r; y > 1; y--) {
+//                 for (c = 0; c < 10; c++) {
+//                 board[y][c] = board[y-1][c] 
+//             }
+//             for (c = 0; c < 10; c++){
+//                 board[0][c] = white;
+//                 drawSquare(c,0,board[0][c]);
+//             }
+//             }
+//         }    
+//     }
+//     addScore(rowCount);
+// }
+
+
+
+
 const startButton = document.querySelector("#landing button")
 startButton.addEventListener("click", function(){
+    
     startFalling();
     startButton.disabled = true;
 })
 
 let isRowFull = true;
 function checkRowFull(){
+    rowCount = 0;
     for(r = 0; r < 20; r++){
         let isRowFull = true;
         for( c = 0; c < 10; c++){
@@ -330,6 +382,7 @@ function checkRowFull(){
         }
         
         if(isRowFull){
+            rowCount++;
             for( y = r; y > 1; y--){
                 for( c = 0; c < 10; c++){
                     board[y][c] = board[y-1][c];
@@ -342,4 +395,8 @@ function checkRowFull(){
         }
     }
     drawBoard();
+    addScore(rowCount);
+    document.getElementById("player-score").innerText = `${currentScore}`;
+
+}
 }

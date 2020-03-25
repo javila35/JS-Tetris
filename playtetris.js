@@ -29,6 +29,10 @@ document.addEventListener("keydown", function(e) {
 document.addEventListener("keydown", function(e) {
     if (e.key === "ArrowDown") {
       currentPiece.moveTetradDown();
+      clearInterval(timer);
+      timer = setInterval(function(){
+        currentPiece.moveTetradDown();
+      }, 800);
     }
   })
 })
@@ -37,7 +41,7 @@ document.addEventListener("keydown", function(e) {
 document.addEventListener("keydown", function(e) {
   if (e.key === "ArrowUp") {
     currentPiece.rotateTetrad();
-  }
+  };
 });
 
 //Spacebar pause function
@@ -46,13 +50,13 @@ document.addEventListener("keydown", function(e) {
     if (start){
       clearInterval(timer);
       timer = null;
-    }
-    else if (!start) {
+    } else if (!start) {
       clearInterval(timer);
       timer = null;
       timer = setInterval(function(){
         currentPiece.moveTetradDown();
-    }, 800);}
-  }
+    }, 800);
+  };
+  };
   start = !start
 });

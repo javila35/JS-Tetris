@@ -26,7 +26,7 @@ const I = [
             [1,1,1,1],
             [0,0,0,0]
         ]
-    ]
+    ];
 
 const O = [
         [
@@ -35,7 +35,7 @@ const O = [
             [0,1,1,0],
             [0,0,0,0]
         ]
-    ]
+    ];
 
 const L = [
         [
@@ -58,7 +58,7 @@ const L = [
             [1,1,1],
             [1,0,0]
         ]
-    ]
+    ];
 
 const J = [ 
         [
@@ -81,7 +81,7 @@ const J = [
             [1,1,1],
             [0,0,0]
         ]
-    ]
+    ];
 
 const S = [
         [
@@ -104,7 +104,7 @@ const S = [
             [1,1,0],
             [0,1,0]
         ]
-    ]
+    ];
 
 const Z = [
         [
@@ -127,7 +127,7 @@ const Z = [
             [1,1,0],
             [1,0,0]
         ]
-    ]
+    ];
 
 const T = [ 
         [
@@ -150,9 +150,10 @@ const T = [
             [1,1,0],
             [0,1,0]
         ]
-    ]
+    ];
 
     const BLOCKS = [
+<<<<<<< HEAD
         [I, "blue"],
         [O, "yellow"],
         [Z, "green"],
@@ -162,6 +163,16 @@ const T = [
         [T, "purple"]
       ]
 
+=======
+        [I, "#009FDA"],
+        [O, "#FECB00"],
+        [Z, "#ED2939"],
+        [S, "#69BE28"],
+        [L, "#FF7900"],
+        [J, "#0065BD"],
+        [T, "#952D98"]
+      ];
+>>>>>>> origin
       
 
     class Piece{
@@ -169,29 +180,28 @@ const T = [
             this.tetrad = tetrad;
             this.color = color;
             this.stage = 0;
-            this.activeTetrad = this.tetrad[this.stage]
+            this.activeTetrad = this.tetrad[this.stage];
             this.x = 4;
             this.y = -1;
-        }
+        };
     
         colorTetrad(color){
             for (r=0; r<this.activeTetrad.length; r++){
                 for (c=0; c<this.activeTetrad.length; c++){
                     if (this.activeTetrad[r][c]==1){
                         drawSquare(this.x + c, this.y + r, color)
-                        // board[this.y+r][this.x+c]=this.color
-                    }
-                }
-            }
-        }
+                    };
+                };
+            };
+        };
     
         drawTetrad(){
             this.colorTetrad(this.color);
-        }
+        };
     
         deleteTetrad(){
             this.colorTetrad(white);
-        }
+        };
     
         moveTetradDown(){
             if (!this.collision(0,1,this.activeTetrad)){
@@ -199,25 +209,25 @@ const T = [
                 this.y++;
                 this.drawTetrad();
             } else {
-                this.lock()
-            }
-        }
+                this.lock();
+            };
+        };
     
         moveTetradRight(){
             this.deleteTetrad()
             if (!this.collision(1, 0, this.activeTetrad)){
                 this.x++;
-            }
+            };
             this.drawTetrad();
-        }
+        };
 
         moveTetradLeft(){
             this.deleteTetrad();
             if (!this.collision(-1, 0, this.activeTetrad)){
                 this.x--;
-            }
+            };
             this.drawTetrad();
-            }
+            };
 
         rotateTetrad(){
             let landingStage = this.tetrad[(this.stage + 1)%this.tetrad.length];
@@ -225,55 +235,54 @@ const T = [
 
             if (this.collision(0,0,landingStage)){
                 if (this.x > 5){
-                    kick = -1
+                    kick = -1;
                 }
                 else {
-                    kick = 1
-                }
-            }
-            // if (!collision)
+                    kick = 1;
+                };
+            };
+
             if (!this.collision(0,0,landingStage)){
                 this.deleteTetrad();
-                this.x += kick
-                this.stage = (this.stage + 1)%this.tetrad.length
-                this.activeTetrad = this.tetrad[this.stage]
+                this.x += kick;
+                this.stage = (this.stage + 1)%this.tetrad.length;
+                this.activeTetrad = this.tetrad[this.stage];
                 this.drawTetrad();
-            }
-        }
+            };
+        };
 
         collision(x,y,piece){
             for (r=0; r<piece.length; r++){
                 for (c=0; c<piece.length; c++){
                     if (!piece[r][c]){
                         continue;
-                    }
+                    };
             
                 let newX = this.x + c + x;
                 let newY = this.y + r + y;
 
                 if (newX<0 || newX>10 || newY>=20){
                     return true;
-                }
+                };
 
                 if (newY < 0){
                     continue;
-                }
+                };
 
                 if (board[newY][newX] != white){
                     return true;
-                }
-            }
-        }
+                };
+            };
+        };
         return false;
-        }
-
+        };
 
         lock(){
           for (r=0; r< this.activeTetrad.length; r++){
             for (c=0; c< this.activeTetrad.length; c++){
                 if (!this.activeTetrad[r][c]){
                     continue;
-                }
+                };
     
                 if (this.y + r < 0){
                     alert("Womp-ba-domp. Game Over");
@@ -282,20 +291,26 @@ const T = [
 
                     location.reload(false);
                     break;
-                } 
+                }
                 else {
                     board[this.y+r][this.x+c] = this.color;
-                    drawSquare(this.x+c, this.y+r, board[this.y+r][this.x+c])
+                    drawSquare(this.x+c, this.y+r, board[this.y+r][this.x+c]);
                     clearInterval(timer);
                     timer = null;
-                }
-            }
-          }
+                };
+            };
+          };
             drawBoard();
             checkRowFull();
             startFalling();
+<<<<<<< HEAD
         }
     }
+=======
+        };
+
+    };
+>>>>>>> origin
 //END OF CLASS
 
 let currentScore = 0;
@@ -303,10 +318,10 @@ let currentPiece = null;
 
 //Select Random Piece
 function getRandomPiece(){
-    let id = Math.floor(Math.random()*7)
+    let id = Math.floor(Math.random()*7);
     let x = BLOCKS[id];
     return new Piece(x[0], x[1]);
-}
+};
 
 let timer = null;
 let start = false;
@@ -370,7 +385,7 @@ startButton.addEventListener("click", function(){
     
     startFalling();
     startButton.disabled = true;
-})
+});
 
 let isRowFull = true;
 function checkRowFull(){
@@ -379,24 +394,28 @@ function checkRowFull(){
         let isRowFull = true;
         for( c = 0; c < 10; c++){
             isRowFull = isRowFull && (board[r][c] != white);
-        }
+        };
         
         if(isRowFull){
             rowCount++;
             for( y = r; y > 1; y--){
                 for( c = 0; c < 10; c++){
                     board[y][c] = board[y-1][c];
-                }
-            }
+                };
+            };
 
             for( c = 0; c < 10; c++){
                 board[0][c] = white;
-            }
-        }
-    }
+            };
+        };
+    };
     drawBoard();
+<<<<<<< HEAD
     addScore(rowCount);
     document.getElementById("player-score").innerText = `${currentScore}`;
 
 }
 }
+=======
+};
+>>>>>>> origin

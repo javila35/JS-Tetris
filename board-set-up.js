@@ -4,8 +4,11 @@ const white = "white";
 const sq = 20;
 
 function drawSquare(x, y, color){
+    grid.shadowOffsetX = 0.5;
+    grid.shadowOffsetY = 0.5;
+    grid.shadowColor = "black";
     grid.fillStyle = color;
-    grid.fillRect(x*sq, y*sq, sq, sq)
+    grid.fillRect(x*sq, y*sq, sq, sq);
     grid.strokeStyle = "gray";
     grid.strokeRect(x*sq, y*sq, sq, sq);
 }
@@ -17,18 +20,18 @@ let board = [];
 for (r=0; r<row; r++){
     board[r]=[];
     for (c=0; c<column; c++){
-        board[r][c] = white
-    }
-}
+        board[r][c] = white;
+    };
+};
 
 function drawBoard(){
     for (r=0; r<row; r++){
         for (c=0; c<column; c++){
             drawSquare(c, r, board[r][c])
-        }
-    }
-}
+        };
+    };
+};
 
-drawBoard()
+drawBoard();
 
 // let currentScore = 0;

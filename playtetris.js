@@ -46,6 +46,8 @@ document.addEventListener("keydown", function(e) {
       timer = null;
     }
     else if (!start) {
+      clearInterval(timer);
+      timer = null;
       timer = setInterval(function(){
         currentPiece.moveTetradDown();
     }, 800);}

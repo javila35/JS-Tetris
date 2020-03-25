@@ -291,6 +291,7 @@ const T = [
             checkRowFull();
             startFalling();
         }
+
     }
 //END OF CLASS
  
@@ -312,7 +313,6 @@ function startFalling(){
     }, 800);
     start = true;
 };
-
 
 
 const startButton = document.querySelector("#landing button")

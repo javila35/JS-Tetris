@@ -153,7 +153,6 @@ const T = [
     ];
 
     const BLOCKS = [
-<<<<<<< HEAD
         [I, "blue"],
         [O, "yellow"],
         [Z, "green"],
@@ -163,16 +162,6 @@ const T = [
         [T, "purple"]
       ]
 
-=======
-        [I, "#009FDA"],
-        [O, "#FECB00"],
-        [Z, "#ED2939"],
-        [S, "#69BE28"],
-        [L, "#FF7900"],
-        [J, "#0065BD"],
-        [T, "#952D98"]
-      ];
->>>>>>> origin
       
 
     class Piece{
@@ -303,14 +292,8 @@ const T = [
             drawBoard();
             checkRowFull();
             startFalling();
-<<<<<<< HEAD
         }
     }
-=======
-        };
-
-    };
->>>>>>> origin
 //END OF CLASS
 
 let currentScore = 0;
@@ -410,12 +393,8 @@ function checkRowFull(){
         };
     };
     drawBoard();
-<<<<<<< HEAD
     addScore(rowCount);
     document.getElementById("player-score").innerText = `${currentScore}`;
 
 }
 }
-=======
-};
->>>>>>> origin

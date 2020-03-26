@@ -433,9 +433,9 @@ function checkHighScore(){
 //   function compareScore(dataArray){
 //     let scores = dataArray.sort(function(a, b){
 //         return b.score-a.score});
-if (currentScore > parseInt(document.getElementById("player2-score").textContent)){
+    if (currentScore > parseInt(document.getElementById("player2-score").textContent)){
     modal.style.display = "block";
-}else{
+    } else {
         alert("Womp-ba-domp. Game Over");
         location.reload(false);
 }   

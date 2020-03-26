@@ -1,12 +1,14 @@
+
+
 const canvas = document.getElementById('canvas')
 let grid = canvas.getContext("2d");
-const white = "white";
-const sq = 20;
+const white = "black";
+const sq = 26;
 
 function drawSquare(x, y, color){
     grid.shadowOffsetX = 0.5;
     grid.shadowOffsetY = 0.5;
-    grid.shadowColor = "black";
+    grid.shadowColor = "gray";
     grid.fillStyle = color;
     grid.fillRect(x*sq, y*sq, sq, sq);
     grid.strokeStyle = "gray";

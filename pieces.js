@@ -424,17 +424,9 @@ const SCORES_URL = "https://mod-3-tetris-backend.herokuapp.com/api/v1/leaders"
 var modal = document.getElementById("scoreModal");
 
 function checkHighScore(){
-// fetch(SCORES_URL)
-//   .then(resp => resp.json())
-//   .then(data => {
-//       compareScore(data);
-//   })
-
-//   function compareScore(dataArray){
-//     let scores = dataArray.sort(function(a, b){
-//         return b.score-a.score});
+    makeTable();
     if (currentScore > parseInt(document.getElementById("player2-score").textContent)){
-    modal.style.display = "block";
+        modal.style.display = "block";
     } else {
         alert("Womp-ba-domp. Game Over");
         location.reload(false);
@@ -450,7 +442,6 @@ document.getElementById("scoreForm").addEventListener("submit", function(event){
     modal.style.display = "none";
     makeTable()
     location.reload(false)
-    
 })
 
 

@@ -307,23 +307,45 @@ return new Piece(x[0], x[1]);
 let timer = null;
 let start = false;
 let rate = 600;
-let totalRows = 9;
+let totalRows = 0;
+let currentLevel = 1;
 
 function setLevel(){
-    let currentLevel = 1;
+    
     if (totalRows == 10 && rate == 600){
         console.log(" NEXT LEVEL")
         rate = (rate - 100);
+        currentLevel++;
+        
     }
     if (totalRows == 20 && rate == 500){
         console.log(" NEXT LEVEL")
         rate = (rate - 100);
+        currentLevel++;
     }
     if (totalRows == 30 && rate == 400){
         console.log(" NEXT LEVEL")
         rate = (rate - 100);
+        increaseScore();
+        currentLevel++;
+    }
+    if (totalRows == 40 && rate == 300){
+        console.log(" NEXT LEVEL")
+        rate = (rate/2);
+        currentLevel++;
+    }
+    if (totalRows == 50 && rate == 150){
+        console.log(" NEXT LEVEL")
+        rate = (rate - 50);
+        increaseScore();
+        currentLevel++;
     }
 };
+
+let oneLineScore = 40;
+let twoLineScore = 200;
+let threeLineScore = 300;
+let fourLineScore = 1200;
 
 function increaseScore(){
     oneLineScore = (oneLineScore * 2);
@@ -340,11 +362,9 @@ function startFalling(rate){
     start = true;
 };
 
+
+
 function addScore(rowsCleared){
-    let oneLineScore = 40;
-    let twoLineScore = 200;
-    let threeLineScore = 300;
-    let fourLineScore = 1200;
 
     if (rowsCleared == 1){
         currentScore += oneLineScore

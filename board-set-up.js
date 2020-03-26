@@ -35,7 +35,7 @@ function drawBoard(){
 drawBoard();
 
 let currentScore = 0;
-SCORES_URL = "http://localhost:3000/api/v1/leaders"
+SCORES_URL = "https://mod-3-tetris-backend.herokuapp.com/api/v1/leaders"
 function makeTable(){
     fetch(SCORES_URL)
     .then(resp => resp.json())

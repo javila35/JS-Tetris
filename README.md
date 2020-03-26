@@ -21,11 +21,11 @@ In your favorite web browser, head to "localhost:3000/" and get to saving your f
 When you press "Start Game", pieces (also known as "tetrads" or "tetrominos") will start falling from the sky (ie, the top of the board). Your job is to control those pieces as they fall, and to stack them so that they fill entire rows. When a row is entirely filled, it will clear, and your points will increase. But hurry -- as more time passes, the pieces will begin to fall faster and faster! And as soon as the pieces pile up to the top of the screen, GAME OVER.
 
 Key Commands:
-→ (Arrow Right) : moves the piece to the right.
-← (Arrow Left) : moves the piece to the left.
-↓ (Arrow Down) : speeds up the piece's movement down.
-↑ (Arrow Up) : rotates the piece 90 degrees.
-Spacebar : pauses the game. (Don't cheat!)
+→ (Arrow Right) : moves the piece to the right.</br>
+← (Arrow Left) : moves the piece to the left.</br>
+↓ (Arrow Down) : speeds up the piece's movement down.</br>
+↑ (Arrow Up) : rotates the piece 90 degrees.</br>
+Spacebar : pauses the game. (Don't cheat!)</br>
 
 Scoring:
  - For a single filled row : 40 pts
@@ -33,7 +33,7 @@ Scoring:
  - Three rows filled at once : 300 pts
  - Four row cleared at once : 1200 pts
 
-    These scores all double at Level 3.
+   &emsp; (Note: These scores all double once you reach Level 3.)
 
 Levels:
 For every ten rows cleared, you move to the next level.

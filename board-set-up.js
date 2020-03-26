@@ -1,5 +1,3 @@
-
-
 const canvas = document.getElementById('canvas')
 let grid = canvas.getContext("2d");
 const white = "black";

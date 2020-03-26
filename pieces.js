@@ -420,7 +420,7 @@ document.getElementById("player-score").innerText = `${currentScore}`;
 
 
 //high score
-const SCORES_URL = "http://localhost:3000/api/v1/leaders"
+const SCORES_URL = "https://mod-3-tetris-backend.herokuapp.com/api/v1/leaders"
 var modal = document.getElementById("scoreModal");
 
 function checkHighScore(){
@@ -455,7 +455,7 @@ document.getElementById("scoreForm").addEventListener("submit", function(event){
 
 
 function postLeader(user, score){
-    fetch("http://localhost:3000/api/v1/leaders", {
+    fetch("https://mod-3-tetris-backend.herokuapp.com/api/v1/leaders", {
         method:"POST",
         headers: {
             "Content-Type": "application/json",

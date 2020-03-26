@@ -1,5 +1,3 @@
-const BLOCKS_URL = "http://localhost/api/v1/blocks"
-
 document.addEventListener("DOMContentLoaded", function(){
 
 //Get currentPiece to show up on the screen

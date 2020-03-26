@@ -455,6 +455,7 @@ document.getElementById("scoreForm").addEventListener("submit", function(event){
 
 
 function postLeader(user, score){
+    console.log("You are begininng post")
     fetch("https://mod-3-tetris-backend.herokuapp.com/api/v1/leaders", {
         method:"POST",
         headers: {

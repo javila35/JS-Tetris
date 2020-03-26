@@ -276,6 +276,8 @@ class Piece{
                 checkHighScore();
                 drawBoard();
                 checkRowFull();
+                clearInterval(timer);
+                timer = null;
                 return;
             } 
             else {

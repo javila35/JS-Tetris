@@ -34,7 +34,6 @@ function drawBoard(){
 
 drawBoard();
 
-let currentScore = 0;
  SCORES_URL = "http://localhost:3000/api/v1/highscores"
 
 document.addEventListener("DOMContentLoaded", function(){
@@ -46,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function(){
     })
 };
 
-makeTable();
+// makeTable();
 
 function populateLeaderboard(dataArray){
     let scores = dataArray.sort(function(a, b){

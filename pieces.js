@@ -288,12 +288,14 @@ class Piece{
       };
         drawBoard();
         checkRowFull();
-        startFalling();
+        setLevel();
+        startFalling(rate);
     };
 
 };
 //END OF CLASS
 
+let currentScore = 0;
 let currentPiece = null;
 
 //Select Random Piece
@@ -305,30 +307,78 @@ return new Piece(x[0], x[1]);
 
 let timer = null;
 let start = false;
-function startFalling(){
-currentPiece = getRandomPiece();
-timer = setInterval(function(){
-    currentPiece.moveTetradDown();
-}, 800);
-start = true;
+let rate = 600;
+let totalRows = 9;
+
+function setLevel(){
+    let currentLevel = 1;
+    if (totalRows == 10 && rate == 600){
+        console.log(" NEXT LEVEL")
+        rate = (rate - 100);
+    }
+    if (totalRows == 20 && rate == 500){
+        console.log(" NEXT LEVEL")
+        rate = (rate - 100);
+    }
+    if (totalRows == 30 && rate == 400){
+        console.log(" NEXT LEVEL")
+        rate = (rate - 100);
+    }
 };
+
+function increaseScore(){
+    oneLineScore = (oneLineScore * 2);
+    twoLineScore = (twoLineScore * 2);
+    threeLineScore = (threeLineScore * 2);
+    fourLineScore = (fourLineScore * 2);
+}
+
+function startFalling(rate){
+    currentPiece = getRandomPiece();
+    timer = setInterval(function(){
+        currentPiece.moveTetradDown();
+    }, rate);
+    start = true;
+};
+
+function addScore(rowsCleared){
+    let oneLineScore = 40;
+    let twoLineScore = 200;
+    let threeLineScore = 300;
+    let fourLineScore = 1200;
+
+    if (rowsCleared == 1){
+        currentScore += oneLineScore
+    }
+    if (rowsCleared == 2){
+        currentScore += twoLineScore
+    }
+    if (rowsCleared == 3){
+        currentScore += threeLineScore
+    }
+    if (rowsCleared == 4){
+        currentScore += fourLineScore
+    }
+}
 
 
 const startButton = document.querySelector("#landing button")
 startButton.addEventListener("click", function(){
-startFalling();
+startFalling(rate);
 startButton.disabled = true;
 });
 
 let isRowFull = true;
 function checkRowFull(){
-for(r = 0; r < 20; r++){
-    let isRowFull = true;
-    for( c = 0; c < 10; c++){
-        isRowFull = isRowFull && (board[r][c] != white);
+    rowCount = 0;
+    for(r = 0; r < 20; r++){
+        let isRowFull = true;
+        for( c = 0; c < 10; c++){
+            isRowFull = isRowFull && (board[r][c] != white);
     };
     
     if(isRowFull){
+        rowCount++;
         for( y = r; y > 1; y--){
             for( c = 0; c < 10; c++){
                 board[y][c] = board[y-1][c];
@@ -338,11 +388,13 @@ for(r = 0; r < 20; r++){
         for( c = 0; c < 10; c++){
             board[0][c] = white;
         }
-        currentScore += 10
-        document.getElementById("player-score").innerText = currentScore;
     }
 }
 drawBoard();
+totalRows += rowCount;
+addScore(rowCount);
+document.getElementById("player-score").innerText = `${currentScore}`;
+
 }
 
 
@@ -366,6 +418,7 @@ if (currentScore > parseInt(document.getElementById("player2-score").textContent
     modal.style.display = "block";
 }else{
         alert("Womp-ba-domp. Game Over");
+        break;
         location.reload(false);
 }   
     
@@ -381,20 +434,20 @@ location.reload(false)
 })
 
 
-function postLeader(username, score){
-fetch(SCORES_URL, {
-    method:"POST",
-    headers: {
-        "ContentType": "application/json",
-        Accept: "application/json"
-    },
-    body: JSON.stringify({highscore: {highscore: {
-        username: username,
-        score: score
-    }}})
-})
-.then(resp => resp.json())
-.then(data => {
-        console.log(data)
-    })
-}
+// function postLeader(username, score){
+// fetch(SCORES_URL, {
+//     method:"POST",
+//     headers: {
+//         "ContentType": "application/json",
+//         Accept: "application/json"
+//     },
+//     body: JSON.stringify({highscore: {highscore: {
+//         username: username,
+//         score: score
+//     }}})
+// })
+// .then(resp => resp.json())
+// .then(data => {
+//         console.log(data)
+//     })
+// }

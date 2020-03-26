@@ -30,7 +30,7 @@ document.addEventListener("keydown", function(e) {
       clearInterval(timer);
       timer = setInterval(function(){
         currentPiece.moveTetradDown();
-      }, 800);
+      }, rate);
     }
   })
 })
@@ -53,7 +53,7 @@ document.addEventListener("keydown", function(e) {
       timer = null;
       timer = setInterval(function(){
         currentPiece.moveTetradDown();
-    }, 800);
+    }, rate);
   };
   };
   start = !start

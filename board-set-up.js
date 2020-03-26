@@ -35,7 +35,7 @@ function drawBoard(){
 drawBoard();
 
 let currentScore = 0;
- SCORES_URL = "http://localhost:3000/api/v1/highscores"
+ SCORES_URL = "http://localhost:3000/api/v1/leaders"
 
 document.addEventListener("DOMContentLoaded", function(){
   function makeTable(){

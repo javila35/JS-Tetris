@@ -352,7 +352,7 @@ function increaseScore(){
     twoLineScore = (twoLineScore * 2);
     threeLineScore = (threeLineScore * 2);
     fourLineScore = (fourLineScore * 2);
-}
+};
 
 function startFalling(rate){
     currentPiece = getRandomPiece();
@@ -361,8 +361,6 @@ function startFalling(rate){
     }, rate);
     start = true;
 };
-
-
 
 function addScore(rowsCleared){
 
@@ -378,7 +376,7 @@ function addScore(rowsCleared){
     if (rowsCleared == 4){
         currentScore += fourLineScore
     }
-}
+};
 
 
 const startButton = document.querySelector("#landing button")
@@ -440,13 +438,11 @@ document.getElementById("scoreForm").addEventListener("submit", function(event){
     let score1 = currentScore;
     postLeader(username1, score1)
     modal.style.display = "none";
-    makeTable()
-    location.reload(false)
+    location.reload(false);
 })
 
 
 function postLeader(user, score){
-    console.log("You are begininng post")
     fetch("https://mod-3-tetris-backend.herokuapp.com/api/v1/leaders", {
         method:"POST",
         headers: {
@@ -458,8 +454,6 @@ function postLeader(user, score){
             score: score
         })
     })
-    .then(resp => console.log(resp))
-    // .then(data => {
-    //         console.log(data)
-    //     })
-    }
+    .then(response => response.json())
+    .then(makeTable());
+};

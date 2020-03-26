@@ -401,7 +401,7 @@ document.getElementById("player-score").innerText = `${currentScore}`;
 
 
 //high score
-const SCORES_URL = "http://localhost:3000/api/v1/highscores"
+const SCORES_URL = "http://localhost:3000/api/v1/leaders"
 var modal = document.getElementById("scoreModal");
 
 function checkHighScore(){
@@ -425,29 +425,31 @@ if (currentScore > parseInt(document.getElementById("player2-score").textContent
 }
 
 document.getElementById("scoreForm").addEventListener("submit", function(event){
-event.preventDefault();
-let username = event.target.username.value;
-let score = currentScore;
-postLeader(username, score)
-modal.style.display = "none";
-location.reload(false)
+    event.preventDefault();
+    let username1 = event.target.username.value;
+    let score1 = currentScore;
+    postLeader(username1, score1)
+    modal.style.display = "none";
+    makeTable()
+    location.reload(false)
+    
 })
 
 
-// function postLeader(username, score){
-// fetch(SCORES_URL, {
-//     method:"POST",
-//     headers: {
-//         "ContentType": "application/json",
-//         Accept: "application/json"
-//     },
-//     body: JSON.stringify({highscore: {highscore: {
-//         username: username,
-//         score: score
-//     }}})
-// })
-// .then(resp => resp.json())
-// .then(data => {
-//         console.log(data)
-//     })
-// }
+function postLeader(user, score){
+    fetch("http://localhost:3000/api/v1/leaders", {
+        method:"POST",
+        headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+        },
+        body: JSON.stringify({
+            username: user,
+            score: score
+        })
+    })
+    .then(resp => console.log(resp))
+    // .then(data => {
+    //         console.log(data)
+    //     })
+    }

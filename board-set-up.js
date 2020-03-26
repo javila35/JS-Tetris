@@ -1,7 +1,7 @@
 const canvas = document.getElementById('canvas')
 let grid = canvas.getContext("2d");
 const white = "black";
-const sq = 26;
+const sq = 24;
 
 function drawSquare(x, y, color){
     grid.shadowOffsetX = 0.5;
@@ -34,18 +34,15 @@ function drawBoard(){
 
 drawBoard();
 
- SCORES_URL = "http://localhost:3000/api/v1/highscores"
-
-document.addEventListener("DOMContentLoaded", function(){
-  function makeTable(){
+let currentScore = 0;
+SCORES_URL = "http://localhost:3000/api/v1/leaders"
+function makeTable(){
     fetch(SCORES_URL)
     .then(resp => resp.json())
     .then(data => {
         populateLeaderboard(data);
     })
 };
-
-// makeTable();
 
 function populateLeaderboard(dataArray){
     let scores = dataArray.sort(function(a, b){
@@ -55,4 +52,7 @@ function populateLeaderboard(dataArray){
             document.getElementById(`player${i}-score`).innerText = scores[i].score;
         }
     }
+
+document.addEventListener("DOMContentLoaded", function(){  
+    makeTable();
 })

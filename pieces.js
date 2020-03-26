@@ -153,15 +153,14 @@ const T = [
 ];
 
 const BLOCKS = [
-    [I, "blue"],
-    [O, "yellow"],
-    [Z, "green"],
-    [S, "red"],
-    [L, "orange"],
-    [J, "pink"],
-    [T, "purple"]
-  ]
-
+    [I, "#009FDA"],
+    [O, "#FECB00"],
+    [Z, "#ED2939"],
+    [S, "#69BE28"],
+    [L, "#FF7900"],
+    [J, "#0065BD"],
+    [T, "#952D98"]
+  ];
   
 
 class Piece{
@@ -274,13 +273,11 @@ class Piece{
             };
 
             if (this.y + r < 0){
-                alert("Womp-ba-domp. Game Over");
-
-                //create gameOver function? reset board, upload score, reset score
-
-                location.reload(false);
-                break;
-            }
+                checkHighScore();
+                drawBoard();
+                checkRowFull();
+                return;
+            } 
             else {
                 board[this.y+r][this.x+c] = this.color;
                 drawSquare(this.x+c, this.y+r, board[this.y+r][this.x+c]);
@@ -291,13 +288,12 @@ class Piece{
       };
         drawBoard();
         checkRowFull();
-        levelUp;
-        startFalling(rate);
-    }
-}
+        startFalling();
+    };
+
+};
 //END OF CLASS
 
-let currentScore = 0;
 let currentPiece = null;
 
 //Select Random Piece
@@ -309,83 +305,23 @@ return new Piece(x[0], x[1]);
 
 let timer = null;
 let start = false;
-let rate = (800 - );
-let totalRows = 9;
-
-
-function setRate(){
-if (totalRows == 10){
-    console.log(" NEXT LEVEL")
-    rate = (rate - 100);
-}
-};
-
-function startFalling(rate){
+function startFalling(){
 currentPiece = getRandomPiece();
 timer = setInterval(function(){
     currentPiece.moveTetradDown();
-}, rate);
+}, 800);
 start = true;
 };
 
 
-
-// function deleteRow(row){
-//     for (block of row){
-//         block = white;
-//     }
-// }
-function addScore(rowsCleared){
-if (rowsCleared == 1){
-    currentScore += 40
-}
-if (rowsCleared == 2){
-    currentScore += 200
-}
-if (rowsCleared == 3){
-    currentScore += 300
-}
-if (rowsCleared == 4){
-    currentScore += 1200
-}
-}
-
-
-
-// function checkForFullRow(){
-//     rowCount = 0;
-//     for (r = 0; r < row; r++) {
-//         if (board[r].every(block => block !== white)){
-//             rowCount++;
-//             console.log(`Row count is ${rowCount}`);
-//             for (y = r; y > 1; y--) {
-//                 for (c = 0; c < 10; c++) {
-//                 board[y][c] = board[y-1][c] 
-//             }
-//             for (c = 0; c < 10; c++){
-//                 board[0][c] = white;
-//                 drawSquare(c,0,board[0][c]);
-//             }
-//             }
-//         }    
-//     }
-//     addScore(rowCount);
-// }
-
-
-
-
 const startButton = document.querySelector("#landing button")
-startButton.addEventListener(
-"click", function(){
-
-startFalling(rate);
+startButton.addEventListener("click", function(){
+startFalling();
 startButton.disabled = true;
 });
 
 let isRowFull = true;
 function checkRowFull(){
-rowCount = 0;
 for(r = 0; r < 20; r++){
     let isRowFull = true;
     for( c = 0; c < 10; c++){
@@ -393,7 +329,6 @@ for(r = 0; r < 20; r++){
     };
     
     if(isRowFull){
-        rowCount++;
         for( y = r; y > 1; y--){
             for( c = 0; c < 10; c++){
                 board[y][c] = board[y-1][c];
@@ -402,14 +337,64 @@ for(r = 0; r < 20; r++){
 
         for( c = 0; c < 10; c++){
             board[0][c] = white;
-        };
-    };
-};
+        }
+        currentScore += 10
+        document.getElementById("player-score").innerText = currentScore;
+    }
+}
 drawBoard();
-totalRows += rowCount;
-addScore(rowCount);
-document.getElementById("player-score").innerText = `${currentScore}`;
-
-}
 }
 
+
+
+
+//high score
+const SCORES_URL = "http://localhost:3000/api/v1/highscores"
+var modal = document.getElementById("scoreModal");
+
+function checkHighScore(){
+// fetch(SCORES_URL)
+//   .then(resp => resp.json())
+//   .then(data => {
+//       compareScore(data);
+//   })
+
+//   function compareScore(dataArray){
+//     let scores = dataArray.sort(function(a, b){
+//         return b.score-a.score});
+if (currentScore > parseInt(document.getElementById("player2-score").textContent)){
+    modal.style.display = "block";
+}else{
+        alert("Womp-ba-domp. Game Over");
+        location.reload(false);
+}   
+    
+}
+
+document.getElementById("scoreForm").addEventListener("submit", function(event){
+event.preventDefault();
+let username = event.target.username.value;
+let score = currentScore;
+postLeader(username, score)
+modal.style.display = "none";
+location.reload(false)
+})
+
+
+function postLeader(username, score){
+fetch(SCORES_URL, {
+    method:"POST",
+    headers: {
+        "ContentType": "application/json",
+        Accept: "application/json"
+    },
+    body: JSON.stringify({highscore: {highscore: {
+        username: username,
+        score: score
+    }}})
+})
+.then(resp => resp.json())
+.then(data => {
+        console.log(data)
+    })
+}

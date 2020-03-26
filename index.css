@@ -4,6 +4,7 @@ html {
 
 body {
   font-family: 'Press Start 2P', cursive;
+  font-size: 12px;
   height: 100%;
   margin: 0;
   background-repeat: no-repeat;
@@ -28,7 +29,7 @@ body {
 
 #canvas {
   display: inline-block;
-  margin-left: 60px;
+  margin-left: 25px;
 }
 
 #highscores {
@@ -64,4 +65,21 @@ body {
   padding: 20px;
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
+}
+
+#start {
+  border-radius: 6px;
+  border: 2px solid rgb(160, 47, 47);
+  background-color:black;
+  transition-duration: 0.4s;
+  padding: 12px 28px;
+  font-size: 16px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 10px;
+  color: white;
+}
+  
+#start:hover {
+    background-color: #B95800; /* Green */
+    color: white;
 }

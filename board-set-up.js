@@ -35,3 +35,25 @@ function drawBoard(){
 drawBoard();
 
 let currentScore = 0;
+ SCORES_URL = "http://localhost:3000/api/v1/highscores"
+
+document.addEventListener("DOMContentLoaded", function(){
+  function makeTable(){
+    fetch(SCORES_URL)
+    .then(resp => resp.json())
+    .then(data => {
+        populateLeaderboard(data);
+    })
+};
+
+makeTable();
+
+function populateLeaderboard(dataArray){
+    let scores = dataArray.sort(function(a, b){
+        return b.score-a.score});
+        for (let i=0; i<3; i++){
+            document.getElementById(`player${i}`).innerText = scores[i].username;
+            document.getElementById(`player${i}-score`).innerText = scores[i].score;
+        }
+    }
+})

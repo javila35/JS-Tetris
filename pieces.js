@@ -273,10 +273,11 @@ const T = [
                 };
     
                 if (this.y + r < 0){
-                    alert("Womp-ba-domp. Game Over");
-                    location.reload(false);
-                    break;
-                }
+                    checkHighScore();
+                    drawBoard();
+                    checkRowFull();
+                    return;
+                } 
                 else {
                     board[this.y+r][this.x+c] = this.color;
                     drawSquare(this.x+c, this.y+r, board[this.y+r][this.x+c]);
@@ -336,8 +337,64 @@ function checkRowFull(){
 
             for( c = 0; c < 10; c++){
                 board[0][c] = white;
-            };
-        };
-    };
+            }
+            currentScore += 10
+            document.getElementById("player-score").innerText = currentScore;
+        }
+    }
     drawBoard();
-};
+}
+
+
+
+
+//high score
+const SCORES_URL = "http://localhost:3000/api/v1/highscores"
+var modal = document.getElementById("scoreModal");
+
+function checkHighScore(){
+    // fetch(SCORES_URL)
+    //   .then(resp => resp.json())
+    //   .then(data => {
+    //       compareScore(data);
+    //   })
+
+    //   function compareScore(dataArray){
+    //     let scores = dataArray.sort(function(a, b){
+    //         return b.score-a.score});
+    if (currentScore > parseInt(document.getElementById("player2-score").textContent)){
+        modal.style.display = "block";
+    }else{
+            alert("Womp-ba-domp. Game Over");
+            location.reload(false);
+    }   
+        
+}
+
+document.getElementById("scoreForm").addEventListener("submit", function(event){
+    event.preventDefault();
+    let username = event.target.username.value;
+    let score = currentScore;
+    postLeader(username, score)
+    modal.style.display = "none";
+    location.reload(false)
+})
+
+
+function postLeader(username, score){
+    fetch(SCORES_URL, {
+        method:"POST",
+        headers: {
+            "ContentType": "application/json",
+            Accept: "application/json"
+        },
+        body: JSON.stringify({highscore: {highscore: {
+            username: username,
+            score: score
+        }}})
+    })
+    .then(resp => resp.json())
+    .then(data => {
+            console.log(data)
+        })
+    }

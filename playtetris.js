@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function(){
 //Arrow left function
 document.addEventListener("keydown", function(e) {
     if (e.key === "ArrowLeft") {
+      e.preventDefault();
       currentPiece.moveTetradLeft();
     }
   });
@@ -19,6 +20,7 @@ document.addEventListener("keydown", function(e) {
 //Arrow right function
 document.addEventListener("keydown", function(e) {
     if (e.key === "ArrowRight") {
+      e.preventDefault();
       currentPiece.moveTetradRight();
     }
   });
@@ -26,6 +28,7 @@ document.addEventListener("keydown", function(e) {
   //Arrow down function
 document.addEventListener("keydown", function(e) {
     if (e.key === "ArrowDown") {
+      e.preventDefault();
       currentPiece.moveTetradDown();
       clearInterval(timer);
       timer = setInterval(function(){
@@ -38,6 +41,7 @@ document.addEventListener("keydown", function(e) {
 //Arrow up function
 document.addEventListener("keydown", function(e) {
   if (e.key === "ArrowUp") {
+    e.preventDefault();
     currentPiece.rotateTetrad();
   };
 });

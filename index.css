@@ -1,12 +1,27 @@
+html {
+  height: 100%;
+}
+
+body {
+  font-family: 'Press Start 2P', cursive;
+  height: 100%;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-image: linear-gradient(#002395, #72C7E7);
+  color: #B95800;
+  text-shadow: 1px 1px 2px #ED2939;
+}
+
 .parent {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(5);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  }
+}
   
-  .div1 { grid-area: 1 / 1 / 2 / 6; text-align: center;}
+  .div1 { grid-area: 1 / 1 / 2 / 6; text-align: center; }
   .div2 { grid-area: 2 / 2 / 6 / 5; text-align: center; }
   .div3 { grid-area: 2 / 4 / 6 / 6; text-align: center; }
   .div4 { grid-area: 2 / 1 / 6 / 3; text-align: center; }
@@ -25,7 +40,8 @@
 }
 
 .div4 th, td {
-  padding: 5px;}
+  padding: 5px;
+}
   
 .modal {
   display: none; /* Hidden by default */

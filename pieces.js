@@ -295,7 +295,6 @@ class Piece{
 };
 //END OF CLASS
 
-let currentScore = 0;
 let currentPiece = null;
 
 //Select Random Piece

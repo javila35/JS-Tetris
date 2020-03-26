@@ -314,29 +314,29 @@ let currentLevel = 1;
 
 function setLevel(){
     
-    if (totalRows == 10 && rate == 600){
+    if (totalRows >= 10 && rate == 600){
         console.log(" NEXT LEVEL")
         rate = (rate - 100);
         currentLevel++;
         
     }
-    if (totalRows == 20 && rate == 500){
+    if (totalRows >= 20 && rate == 500){
         console.log(" NEXT LEVEL")
         rate = (rate - 100);
         currentLevel++;
     }
-    if (totalRows == 30 && rate == 400){
+    if (totalRows >= 30 && rate == 400){
         console.log(" NEXT LEVEL")
         rate = (rate - 100);
         increaseScore();
         currentLevel++;
     }
-    if (totalRows == 40 && rate == 300){
+    if (totalRows >= 40 && rate == 300){
         console.log(" NEXT LEVEL")
         rate = (rate/2);
         currentLevel++;
     }
-    if (totalRows == 50 && rate == 150){
+    if (totalRows >= 50 && rate == 150){
         console.log(" NEXT LEVEL")
         rate = (rate - 50);
         increaseScore();

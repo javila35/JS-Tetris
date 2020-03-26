@@ -437,7 +437,6 @@ if (currentScore > parseInt(document.getElementById("player2-score").textContent
     modal.style.display = "block";
 }else{
         alert("Womp-ba-domp. Game Over");
-        break;
         location.reload(false);
 }   
     

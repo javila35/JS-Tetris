@@ -377,6 +377,8 @@ document.getElementById("scoreForm").addEventListener("submit", function(event){
     let score1 = currentScore;
     postLeader(username1, score1)
     modal.style.display = "none";
+    makeTable()
+    location.reload(false)
     
 })
 

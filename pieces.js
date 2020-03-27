@@ -276,6 +276,8 @@ class Piece{
                 checkHighScore();
                 drawBoard();
                 checkRowFull();
+                clearInterval(timer);
+                timer = null;
                 return;
             } 
             else {
@@ -312,29 +314,29 @@ let currentLevel = 1;
 
 function setLevel(){
     
-    if (totalRows == 10 && rate == 600){
+    if (totalRows >= 10 && rate == 600){
         console.log(" NEXT LEVEL")
         rate = (rate - 100);
         currentLevel++;
         
     }
-    if (totalRows == 20 && rate == 500){
+    if (totalRows >= 20 && rate == 500){
         console.log(" NEXT LEVEL")
         rate = (rate - 100);
         currentLevel++;
     }
-    if (totalRows == 30 && rate == 400){
+    if (totalRows >= 30 && rate == 400){
         console.log(" NEXT LEVEL")
         rate = (rate - 100);
         increaseScore();
         currentLevel++;
     }
-    if (totalRows == 40 && rate == 300){
+    if (totalRows >= 40 && rate == 300){
         console.log(" NEXT LEVEL")
         rate = (rate/2);
         currentLevel++;
     }
-    if (totalRows == 50 && rate == 150){
+    if (totalRows >= 50 && rate == 150){
         console.log(" NEXT LEVEL")
         rate = (rate - 50);
         increaseScore();
@@ -352,7 +354,7 @@ function increaseScore(){
     twoLineScore = (twoLineScore * 2);
     threeLineScore = (threeLineScore * 2);
     fourLineScore = (fourLineScore * 2);
-}
+};
 
 function startFalling(rate){
     currentPiece = getRandomPiece();
@@ -361,8 +363,6 @@ function startFalling(rate){
     }, rate);
     start = true;
 };
-
-
 
 function addScore(rowsCleared){
 
@@ -378,7 +378,7 @@ function addScore(rowsCleared){
     if (rowsCleared == 4){
         currentScore += fourLineScore
     }
-}
+};
 
 
 const startButton = document.querySelector("#landing button")
@@ -423,8 +423,9 @@ var modal = document.getElementById("scoreModal");
 var gameOver = document.getElementById("gameOver");
 
 function checkHighScore(){
+    makeTable();
     if (currentScore > parseInt(document.getElementById("player2-score").textContent)){
-    modal.style.display = "block";
+        modal.style.display = "block";
     } else {
         gameOver.style.display = "block";
 }   
@@ -443,7 +444,6 @@ document.getElementById("scoreForm").addEventListener("submit", function(event){
 
 
 function postLeader(user, score){
-    console.log("You are begininng post")
     fetch("https://mod-3-tetris-backend.herokuapp.com/api/v1/leaders", {
         method:"POST",
         headers: {
@@ -455,12 +455,15 @@ function postLeader(user, score){
             score: score
         })
     })
-    .then(resp => console.log(resp))
+    .then(response => response.json())
+    .then(makeTable());
     // .then(data => {
     //         console.log(data)
     //     })
     }
 
-    document.getElementById("home").addEventListener("click", function(){
+document.getElementById("home").addEventListener("click", function(){
         location.href = "https://mod-3-tetris.herokuapp.com/"
     })
+
+

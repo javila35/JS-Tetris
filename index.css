@@ -14,6 +14,14 @@ body {
   text-shadow: 1px 1px 2px #ED2939;
 }
 
+#controls p {
+  line-height: 200%;
+}
+
+.arrow {
+  font-size:1.3em;
+}
+
 .parent {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -80,6 +88,6 @@ body {
 }
   
 #start:hover {
-    background-color: #B95800; /* Green */
+    background-color: #B95800;
     color: white;
 }

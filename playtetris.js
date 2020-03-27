@@ -43,20 +43,3 @@ document.addEventListener("keydown", function(e) {
     currentPiece.rotateTetrad();
   };
 });
-
-//Spacebar pause function
-document.addEventListener("keydown", function(e) {
-  if (e.keyCode === 32) {
-    if (start){
-      clearInterval(timer);
-      timer = null;
-    } else if (!start) {
-      clearInterval(timer);
-      timer = null;
-      timer = setInterval(function(){
-        currentPiece.moveTetradDown();
-    }, rate);
-  };
-  };
-  start = !start
-});

@@ -48,9 +48,11 @@ document.addEventListener("keydown", function(e) {
 document.addEventListener("keydown", function(e) {
   if (e.keyCode === 32) {
     if (start){
+      document.getElementById("pause").style.display = "block";
       clearInterval(timer);
       timer = null;
     } else if (!start) {
+      document.getElementById("pause").style.display = "none";
       clearInterval(timer);
       timer = null;
       timer = setInterval(function(){

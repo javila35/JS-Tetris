@@ -383,9 +383,9 @@ function addScore(rowsCleared){
 
 const startButton = document.querySelector("#landing button")
 startButton.addEventListener("click", function(){
-startFalling(rate);
-startButton.disabled = true;
-});
+    startFalling(rate);
+    startButton.disabled = true;
+    }); 
 
 let isRowFull = true;
 function checkRowFull(){

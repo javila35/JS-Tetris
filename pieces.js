@@ -393,6 +393,7 @@ startButton.addEventListener("click", function(){
           if (start){
             clearInterval(timer);
             timer = null;
+            document.getElementById("pause").style.display = "block";
             audio.pause()
           } else if (!start) {
             clearInterval(timer);
@@ -400,6 +401,7 @@ startButton.addEventListener("click", function(){
             timer = setInterval(function(){
               currentPiece.moveTetradDown();
           }, rate);
+          document.getElementById("pause").style.display = "none";
           audio.play();
         };
         };

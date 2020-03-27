@@ -75,7 +75,7 @@ For every ten rows cleared, you move to the next level.
 <br><br>
 <b>Leaderboard:</b>
 <br />
-<img src="./images/leaderboard.png" width="600">
+<img src="./images/leaderboard.png" width="250">
 <br><br>
 
 ## Highlights
@@ -83,7 +83,7 @@ For every ten rows cleared, you move to the next level.
 Some neat tricks:
 Drawing the Tetris board proved to be more of a challenge than we initially anticipated. Ultimately, we knew we were probably looking at an array (the entire board) of arrays (20 rows) of arrays (to represenet the 10 columns). How to draw each individual grid box? Using the HTML canvas element, we took advantage of the built-in grid methods, such as fillRect(). The big breakthrough, those, was deciding to define a constant "sq" to represent the width/height of a single square. Each "sq" represented one unit. This would make it extremely easy to think of the board as a cartesian plane: In order to locate a piece on the board, we could simply count the number of squares over and down (from the top left corner).
 
-<img src="./images/grid.png" width="200">
+<img src="./images/grid.png" width="150">
 
 No longer was there the need to measure position by pixels (yikes). Instead, behold: 
 

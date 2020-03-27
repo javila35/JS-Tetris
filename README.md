@@ -87,19 +87,19 @@ Drawing the Tetris board proved to be more of a challenge than we initially anti
 
 No longer was there the need to measure position by pixels (yikes). Instead, behold: 
 
-<img src="./images/code1.png" width="600">
+<img src="./images/code1.png" width="200">
 
 Another fun piece of code to write was the function for rotating a piece. There were several cases to deal with: a piece hitting the edge of the board and needing to be nudged over to compensate, a rotation causing a collision with another piece, etc. To deal with this, we stored each piece as an array of its four rotational positions. Before rotating, we previewed the piece's next position.
 
-<img src="./images/landing.png" width="600">
+<img src="./images/landing.png" width="200">
 
 We checked to see whether the rotation would cause a wall collision -- and if so,which side of the board it might collide with (ten columns meant that if the x-position was > 5, the piece was more than halfway across the board). If it hit the right wall, we knew an adjustment left would be necessary; its position would need to be (-1) in the x-direction. On the left, a "kick" of one unit to the right was necessary.
 
-<img src="./images/wall.png" width="600">
+<img src="./images/wall.png" width="200">
 
 Lastly, we re-drew the piece, incorporating the information from above where necessary. A collision with another piece would prevent a rotation; otherwise, the piece assumed its next rotational position.
 
-<img src="./images/wall.png" width="600">
+<img src="./images/wall.png" width="200">
 
 
 ## Credits

@@ -91,3 +91,15 @@ body {
     background-color: #B95800;
     color: white;
 }
+
+
+#pause-screen {
+  text-align: center;
+  line-height: 20px;
+  background-image: linear-gradient( #002395,rgb(67, 132, 211));
+  margin: 100px auto; /* 15% from the top and centered */
+  padding: 100px 0 20 20;
+  border: 1px solid #888;
+  width: 270px;
+  height: 500px; /* Could be more or less, depending on screen size */
+}

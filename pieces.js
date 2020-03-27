@@ -383,6 +383,9 @@ function addScore(rowsCleared){
 
 const startButton = document.querySelector("#landing button")
 startButton.addEventListener("click", function(){
+    const audio = document.getElementById("audio");
+    audio.volume = "0.05";
+    audio.play();
     startFalling(rate);
     startButton.disabled = true;
     document.addEventListener("keydown", function(e) {
@@ -390,12 +393,14 @@ startButton.addEventListener("click", function(){
           if (start){
             clearInterval(timer);
             timer = null;
+            audio.pause()
           } else if (!start) {
             clearInterval(timer);
             timer = null;
             timer = setInterval(function(){
               currentPiece.moveTetradDown();
           }, rate);
+          audio.play();
         };
         };
         start = !start;

@@ -385,7 +385,23 @@ const startButton = document.querySelector("#landing button")
 startButton.addEventListener("click", function(){
     startFalling(rate);
     startButton.disabled = true;
-    }); 
+    document.addEventListener("keydown", function(e) {
+        if (e.keyCode === 32) {
+          if (start){
+            clearInterval(timer);
+            timer = null;
+          } else if (!start) {
+            clearInterval(timer);
+            timer = null;
+            timer = setInterval(function(){
+              currentPiece.moveTetradDown();
+          }, rate);
+        };
+        };
+        start = !start;
+      }
+      );
+});
 
 let isRowFull = true;
 function checkRowFull(){
@@ -413,6 +429,8 @@ drawBoard();
 totalRows += rowCount;
 addScore(rowCount);
 document.getElementById("player-score").innerText = `${currentScore}`;
+document.getElementById("player-level").innerText = `${currentLevel}`;
+document.getElementById("player-lines").innerText = `${totalRows}`;
 
 }
 

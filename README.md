@@ -35,7 +35,7 @@ Head over to <a href="https://mod-3-tetris.herokuapp.com/">T3TRIS</a> to play th
 
 To open the app, you'll have to start up a local server. In your terminal, navigate to the backend api directory and then type "rails s".
  ```
- rails.s
+ rails s
  ```
  If you'd like to see your backend database, you can head to "http://localhost:3000/api/v1/leaders" on your favorite browser.
 

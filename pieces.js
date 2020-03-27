@@ -429,6 +429,8 @@ drawBoard();
 totalRows += rowCount;
 addScore(rowCount);
 document.getElementById("player-score").innerText = `${currentScore}`;
+document.getElementById("player-level").innerText = `${currentLevel}`;
+document.getElementById("player-lines").innerText = `${totalRows}`;
 
 }
 

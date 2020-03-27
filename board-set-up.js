@@ -3,6 +3,10 @@ let grid = canvas.getContext("2d");
 const white = "black";
 const sq = 24;
 
+const storage = document.getElementById('storage')
+let grid2 = storage.getContext("2d");
+
+
 function drawSquare(x, y, color){
     grid.shadowOffsetX = 0.5;
     grid.shadowOffsetY = 0.5;

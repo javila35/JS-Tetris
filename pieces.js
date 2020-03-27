@@ -417,27 +417,16 @@ document.getElementById("player-score").innerText = `${currentScore}`;
 }
 
 
-
-
 //high score
 const SCORES_URL = "https://mod-3-tetris-backend.herokuapp.com/api/v1/leaders"
 var modal = document.getElementById("scoreModal");
+var gameOver = document.getElementById("gameOver");
 
 function checkHighScore(){
-// fetch(SCORES_URL)
-//   .then(resp => resp.json())
-//   .then(data => {
-//       compareScore(data);
-//   })
-
-//   function compareScore(dataArray){
-//     let scores = dataArray.sort(function(a, b){
-//         return b.score-a.score});
     if (currentScore > parseInt(document.getElementById("player2-score").textContent)){
     modal.style.display = "block";
     } else {
-        alert("Womp-ba-domp. Game Over");
-        location.reload(false);
+        gameOver.style.display = "block";
 }   
     
 }
@@ -447,7 +436,6 @@ document.getElementById("scoreForm").addEventListener("submit", function(event){
     let username1 = event.target.username.value;
     let score1 = currentScore;
     postLeader(username1, score1)
-    modal.style.display = "none";
     makeTable()
     location.reload(false)
     
@@ -472,3 +460,7 @@ function postLeader(user, score){
     //         console.log(data)
     //     })
     }
+
+    document.getElementById("home").addEventListener("click", function(){
+        location.href = "https://mod-3-tetris.herokuapp.com/"
+    })

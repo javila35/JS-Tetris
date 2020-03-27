@@ -1,20 +1,45 @@
 # Flatiron Tetris
 **Tetris by [Clarion Heard](https://github.com/clheard54), [Jonny Riecke](https://github.com/Jricecake), and [Joe Avila](https://github.com/javila35)**
 
-Overview and inspiration
+Overview and inspiration:
+
+Head over to <a href="https://mod-3-tetris.herokuapp.com/">T3TRIS</a> to play the epic game online!
+
 <br><br>
 <b>Game Preview</b>
 <br /> 
 <img src="./images/preview.png" width="600">
 <br>
 
-## Getting it Up and Running
+## Installing Locally
 
-To open the app, you'll have to start up a local server. In your Terminal, navigate to the TagLine directory (which you've just downloaded from git). Then type "rails s".
+ - If you'd like to clone down this project repository to your local computer, you can do so by forking it, then hitting the "Clone or download" button in your own fork. Copy the SSH link, and open up your computer's Terminal. Inside, type "git clone <the link you've just copied>". 
+ ```
+   git clone <example: git@github.com:.../Mod-3-Tetris-Frontend.git></example:>
+  ```
+ - You'll also need to fork and clone down the <a href="https://github.com/clheard54/Tetris-Backend-Api">backend</a> repo for this project. You can find the link here: https://github.com/clheard54/Tetris-Backend-Api. Follow the same steps as above.
+
+ - Back in your terminal, type "bundle install".
+  ```
+   bundle install
+  ```
+ - Then, from the root directory, run "rake db:create" and "rake:db:migrate" to create the database locally.
+  ```
+   rake db:create && db:migrate
+  ```
+ - Lastly, run "rake db:seed". Now you're ready to go!
+  ```
+   rake db:seed
+  ```
+
+
+To open the app, you'll have to start up a local server. In your terminal, navigate to the backend api directory and then type "rails s".
  ```
  rails.s
  ```
-In your favorite web browser, head to "localhost:3000/" and get to saving your favorite quotes!
+ If you'd like to see your backend database, you can head to "http://localhost:3000/api/v1/leaders" on your favorite browser.
+
+Lastly, navigate to the frontend directory, and (again in your terminal) type "open index.html". You're good to go!
 
 ## How to Play Tetris
 
@@ -55,6 +80,26 @@ For every ten rows cleared, you move to the next level.
 
 ## Highlights
 
+Some neat tricks:
+Drawing the Tetris board proved to be more of a challenge than we initially anticipated. Ultimately, we knew we were probably looking at an array (the entire board) of arrays (20 rows) of arrays (to represenet the 10 columns). How to draw each individual grid box? Using the HTML canvas element, we took advantage of the built-in grid methods, such as fillRect(). The big breakthrough, those, was deciding to define a constant "sq" to represent the width/height of a single square. Each "sq" represented one unit. This would make it extremely easy to think of the board as a cartesian plane: In order to locate a piece on the board, we could simply count the number of squares over and down (from the top left corner).
+
+<img src="./images/grid.png" width="200">
+
+No longer was there the need to measure position by pixels (yikes). Instead, behold: 
+
+<img src="./images/code1.png" width="600">
+
+Another fun piece of code to write was the function for rotating a piece. There were several cases to deal with: a piece hitting the edge of the board and needing to be nudged over to compensate, a rotation causing a collision with another piece, etc. To deal with this, we stored each piece as an array of its four rotational positions. Before rotating, we previewed the piece's next position.
+
+<img src="./images/landing.png" width="600">
+
+We checked to see whether the rotation would cause a wall collision -- and if so,which side of the board it might collide with (ten columns meant that if the x-position was > 5, the piece was more than halfway across the board). If it hit the right wall, we knew an adjustment left would be necessary; its position would need to be (-1) in the x-direction. On the left, a "kick" of one unit to the right was necessary.
+
+<img src="./images/wall.png" width="600">
+
+Lastly, we re-drew the piece, incorporating the information from above where necessary. A collision with another piece would prevent a rotation; otherwise, the piece assumed its next rotational position.
+
+<img src="./images/wall.png" width="600">
 
 
 ## Credits

@@ -383,6 +383,9 @@ function addScore(rowsCleared){
 
 const startButton = document.querySelector("#landing button")
 startButton.addEventListener("click", function(){
+    const audio = document.getElementById("audio");
+    audio.volume = "0.05";
+    audio.play();
     startFalling(rate);
     startButton.disabled = true;
     document.addEventListener("keydown", function(e) {
@@ -391,6 +394,7 @@ startButton.addEventListener("click", function(){
             clearInterval(timer);
             timer = null;
             document.getElementById("pause").style.display = "block";
+            audio.pause()
           } else if (!start) {
             clearInterval(timer);
             timer = null;
@@ -398,6 +402,7 @@ startButton.addEventListener("click", function(){
               currentPiece.moveTetradDown();
           }, rate);
           document.getElementById("pause").style.display = "none";
+          audio.play();
         };
         };
         start = !start;

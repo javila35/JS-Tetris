@@ -101,6 +101,12 @@ Lastly, we re-drew the piece, incorporating the information from above where nec
 
 <img src="./images/wall.png" width="200">
 
+Scoring System:
+
+The scoring system is a simple checker that looks at the player's current total of rows cleared and adjusts difficulty accordingly. Classic Tetris increases levels every 10 rows cleared, so to mimic this, we implemented a check on variable totalRows after a piece gets locked. If over 10, then the fall rate is increased, and at certain level increments, point values are increased.
+
+<img src="./images/rateincrease.png" width="200">
+
 
 ## Credits
 

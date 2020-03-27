@@ -390,12 +390,14 @@ startButton.addEventListener("click", function(){
           if (start){
             clearInterval(timer);
             timer = null;
+            document.getElementById("pause").style.display = "block";
           } else if (!start) {
             clearInterval(timer);
             timer = null;
             timer = setInterval(function(){
               currentPiece.moveTetradDown();
           }, rate);
+          document.getElementById("pause").style.display = "none";
         };
         };
         start = !start;

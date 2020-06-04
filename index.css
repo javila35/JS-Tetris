@@ -14,9 +14,6 @@ body {
   text-shadow: 1px 1px 2px #ED2939;
 }
 
-#audio {
-  display: hidden;
-}
 
 #controls p {
   line-height: 40px;
